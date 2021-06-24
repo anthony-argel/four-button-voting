@@ -26,6 +26,7 @@ socket.on('counts', counts => {
 
 socket.on('question', q => {
     question.textContent = q;
+    document.title = q + ' | Four Buttons'
 });
 
 socket.on('time', t => {

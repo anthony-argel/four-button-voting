@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Corner | Four Buttons</title>
+    <style>
+        input {
+            width: 70vw;
+        }
+
+        button {
+            margin-top: 2vh;
+            width: 25vw;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Corner</h1>
+    <p>(If you're reading this, you shouldn't be. Good job getting here though.)</p>
+    <Form action='/admin' method="POST" style='display: flex; flex-direction: column;' onsubmit="submitting">
+        <label for="question">Question:</label>
+        <input type="text" name="question" id="question">
+        <label for="blueRes">Response 1(blue):</label>
+        <input type="text" name="blueRes" id="blueRes">
+        <label for="redRes">Response 2(red):</label>
+        <input type="text" name="redRes" id="redRes">
+        <label for="yellowRes">Response 3(yellow):</label>
+        <input type="text" name="yellowRes" id="yellowRes">
+        <label for="greenRes">Response 4(green):</label>
+        <input type="text" name="greenRes" id="greenRes">
+        <label for="password">Secret:</label>
+        <input type="password" name="password" id="password">
+        <input type='submit' value="submit">
+    </Form>
+</body>
+</html>
