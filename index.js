@@ -86,7 +86,7 @@ io.on('connection', socket => {
             yellowCount++;
         }
 
-        io.emit('counts', getList);
+        io.emit('counts', getList());
     })
 });
 
