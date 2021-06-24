@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spam Voting</title>
+    <link rel='stylesheet' href='reset.css'>
+    <link rel='stylesheet' href='styles.css'>
+  </head>
+  <body>
+      <header>
+        <h2>Question?</h2>
+        <p>Live: <span id='time'>0</span></p>
+      </header>
+      <div class='options'>
+        <button class="blue-btn" onclick="emitButtonClick('blue-btn')">Blue</button>
+        <div class='middle-options'>
+            <button class="red-btn" onclick="emitButtonClick('red-btn')">Red</button>
+            <button class='yellow-btn' onclick="emitButtonClick('yellow-btn')">Yellow</button>
+        </div>
+        <button class='green-btn' onclick="emitButtonClick('green-btn')">Green</button>
+      </div>
+    <script src='/socket.io/socket.io.js'></script>
+    <script>
+        const question = document.getElementsByTagName('h2')[0];
+        const blueBtn = document.getElementsByClassName('blue-btn')[0];
+        const redBtn = document.getElementsByClassName('red-btn')[0];
+        const yellowBtn = document.getElementsByClassName('yellow-btn')[0];
+        const greenBtn = document.getElementsByClassName('green-btn')[0];
+        const time = document.getElementById('time');
+        const socket = io();
+
+        function emitButtonClick(buttonName) {
+            if(buttonName === 'blue-btn' || buttonName === 'red-btn' || buttonName === 'green-btn' || buttonName === 'yellow-btn') {
+                socket.emit('button pressed', buttonName);
+            }
+        }
+
+        socket.on('counts', counts => {
+            greenBtn.textContent = counts[0];
+            blueBtn.textContent = counts[1];
+            redBtn.textContent = counts[2];
+            yellowBtn.textContent = counts[3];
+        });
+
+        socket.on('question', q => {
+            question.textContent = q;
+        });
+
+        socket.on('time', t => {
+            time.textContent = t;
+        })
+
+    </script>
+  </body>
+</html>
