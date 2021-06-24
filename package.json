@@ -1,6 +1,9 @@
 {
   "name": "four-buttons",
   "version": "0.0.1",
+  "engines": {
+    "node": "16.1.0"
+  },
   "description": "A clicker game",
   "main": "index.js",
   "scripts": {
