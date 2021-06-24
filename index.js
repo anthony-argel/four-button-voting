@@ -2,9 +2,11 @@ const compression = require('compression');
 const helmet = require('helmet');
 const express = require('express');
 const app = express();
-app.use(express.static('css'));
+const path = require('path');
+app.use(express.static('public'));
 app.use(compression());
 app.use(helmet());
+app.use(express.static(path.join(__dirname, 'public')));
 const http = require('http');
 const server = http.createServer(app);
 const {Server} = require('socket.io');
@@ -53,6 +55,6 @@ app.get('*', (req, res) => {
     res.redirect('/');
 })
 
-server.listen(process.env.PORT || 3000, () => {
+server.listen(3000, () => {
     console.log('listening on *:3000 or ' + process.env.PORT);
 });
